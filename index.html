@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Malla Mecatrónica INTEC - Progreso</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .trimestre {
+            border: 2px solid #333;
+            margin: 20px 0;
+            padding: 15px;
+            border-radius: 10px;
+            background: white;
+        }
+        .asignatura {
+            padding: 10px;
+            margin: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border-left: 5px solid;
+        }
+        .cursada {
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: line-through;
+            border-left-color: #2E7D32;
+        }
+        .disponible {
+            background-color: #2196F3;
+            color: white;
+            border-left-color: #0D47A1;
+        }
+        .bloqueada {
+            background-color: #ccc;
+            color: #666;
+            border-left-color: #666;
+            cursor: not-allowed;
+        }
+        .creditos {
+            float: right;
+            font-weight: bold;
+            background: rgba(0,0,0,0.1);
+            padding: 2px 8px;
+            border-radius: 10px;
+        }
+        .progreso {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .barra-progreso {
+            width: 100%;
+            height: 25px;
+            background: #ddd;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 10px 0;
+        }
+        .progreso-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #4CAF50, #45a049);
+            transition: width 0.5s;
+            text-align: center;
+            color: white;
+            font-weight: bold;
+            line-height: 25px;
+        }
+        .controles {
+            margin: 15px 0;
+        }
+        button {
+            padding: 10px 15px;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .guardar { background: #4CAF50; color: white; }
+        .cargar { background: #2196F3; color: white; }
+        .reiniciar { background: #f44336; color: white; }
+        h1 { color: #333; text-align: center; }
+        h2 { color: #444; border-bottom: 2px solid #ddd; padding-bottom: 5px; }
+        small { font-size: 0.8em; opacity: 0.8; }
+    </style>
+</head>
+<body>
+    <h1>🎓 Malla Curricular - Ingeniería Mecatrónica</h1>
+    <h2>INTEC - 15 Trimestres - 278 Créditos</h2>
+
+    <div class="progreso">
+        <h3>📊 Progreso de la Carrera</h3>
+        <div class="barra-progreso">
+            <div class="progreso-fill" id="barraProgreso" style="width: 0%">0%</div>
+        </div>
+        <p><strong>Créditos cursados:</strong> <span id="creditosCursados">0</span> / 278</p>
+        <p><strong>Asignaturas completadas:</strong> <span id="asignaturasCompletadas">0</span> / 125</p>
+        
+        <div class="controles">
+            <button class="guardar" onclick="guardarProgreso()">💾 Guardar Progreso</button>
+            <button class="cargar" onclick="cargarProgreso()">📂 Cargar Progreso</button>
+            <button class="reiniciar" onclick="reiniciarProgreso()">🔄 Reiniciar Todo</button>
+        </div>
+        
+        <div style="margin-top: 15px;">
+            <div style="display: inline-block; margin-right: 20px;">
+                <div style="display: inline-block; width: 20px; height: 20px; background: #4CAF50; border-radius: 3px;"></div>
+                <span> Cursada</span>
+            </div>
+            <div style="display: inline-block; margin-right: 20px;">
+                <div style="display: inline-block; width: 20px; height: 20px; background: #2196F3; border-radius: 3px;"></div>
+                <span> Disponible</span>
+            </div>
+            <div style="display: inline-block;">
+                <div style="display: inline-block; width: 20px; height: 20px; background: #ccc; border-radius: 3px;"></div>
+                <span> Bloqueada</span>
+            </div>
+        </div>
+    </div>
+
+    <div id="mallaContainer">
+        <!-- La malla se generará automáticamente aquí -->
+    </div>
+
+    <script src="malla-data.js"></script>
+    <script src="progreso.js"></script>
+</body>
+</html>
